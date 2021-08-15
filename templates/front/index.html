@@ -1,0 +1,81 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <meta name="theme-color" content="#fafafa">
+
+  <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+    <title>Testing Vue</title>
+  </head>
+  <body>
+    <div id="vue-app">
+      <h1>[[ selected ]]
+
+      </h1>
+
+    
+
+      <select v-model="selected">
+        <option disabled value="">Please select an entry</option>
+      
+
+        <option v-for="(item, index) in list" :key="item.id">
+            [[ item.entry_title ]]
+        </option>
+
+
+      </select>
+
+      
+
+    </div>
+    <script type="text/javascript">
+        const url = '/api/entries/';
+        let app = new Vue({
+
+        el: "#vue-app",
+        delimiters: ['[[', ']]'],
+        data () {
+            return {
+                results: "loading...",
+                list: [],
+                selected: ""
+            }
+        },
+        mounted() {
+
+          axios.get(url).then(response => {
+            this.list = response.data
+          })
+
+        },
+        methods: {
+    greet: function (event) {
+      // `this` inside methods points to the Vue instance
+   
+     this.results = event;
+    }
+
+}
+      });
+    </script>
+  </body>
+</html>

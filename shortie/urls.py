@@ -49,7 +49,9 @@ urlpatterns = [
     # path('', include(router.urls)),
     # path('admin/', admin.site.urls),
     path('admin/', admin.site.urls),
-    path('', include('entries.urls')),
+    path('api/', include('entries.urls')),
+    path('', include('front.urls')),
+
     # path('datawizard/', include('data_wizard.urls')),
     # path('api-auth/', include('rest_framework.urls')),
 

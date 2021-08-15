@@ -20,7 +20,7 @@ def api_root(request, format=None):
 class EntryList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
     queryset = Entry.objects.all()
     serializer_class = EntrySerializer
-    # permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = []
 
 
     def get(self, request, *args, **kwargs):
