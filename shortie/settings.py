@@ -80,11 +80,13 @@ WSGI_APPLICATION = 'shortie.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'shortie2021',
-        'USERNAME': 'nicoledominguez',
-        'OPTIONS': {
-            'read_default_file': '/my.cnf',
-        },
+        'HOST': 'sodevious.mysql.pythonanywhere-services.com',
+        'NAME': 'sodevious$shortie_dev',
+        'USERNAME': 'sodevious',
+        'PASSWORD': '4EfPXRv8m7iLi3KEpyEy'
+        # 'OPTIONS': {
+        #     'read_default_file': '/my.cnf',
+        # },
     }
 }
 
@@ -138,3 +140,8 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticatedOrReadOnly'
     ]
 }
+
+try:
+    from local_settings import *
+except ImportError as e:
+    pass
