@@ -7,3 +7,4 @@ shortie/local_settings.py
 static
 .DS_Store
 shortie/local.py
+env
