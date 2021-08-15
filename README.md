@@ -13,3 +13,6 @@ python3 -m pip list --format=freeze
 
 mysql -u root
 ```
+
+
+ python -m pip install -r requirements.txt

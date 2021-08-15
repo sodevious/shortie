@@ -2,7 +2,8 @@ __pycache__
 *.pyc
 *.sqlite3
 shortyenv
-local_settings.py
+shortie/local_settings.py
 *.local
 static
 .DS_Store
+shortie/local.py
