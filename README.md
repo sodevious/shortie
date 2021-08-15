@@ -1,3 +1,5 @@
+python version 3.6
+
 ```
 source shortyenv/bin/activate
 

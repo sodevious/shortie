@@ -80,11 +80,13 @@ WSGI_APPLICATION = 'shortie.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'shortie2021',
-        'USERNAME': 'nicoledominguez',
-        'OPTIONS': {
-            'read_default_file': '/my.cnf',
-        },
+        'HOST': 'sodevious.mysql.pythonanywhere-services.com',
+        'NAME': 'sodevious$shortie_dev',
+        'USERNAME': 'sodevious',
+        'PASSWORD': '4EfPXRv8m7iLi3KEpyEy'
+        # 'OPTIONS': {
+        #     'read_default_file': '/my.cnf',
+        # },
     }
 }
 
@@ -135,8 +137,16 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly'
     ]
 }
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+try:
+    from local_settings import *
+except ImportError as e:
+    pass
+
