@@ -4,17 +4,12 @@ from django.utils import timezone
 
 
 class Entry(models.Model):
-    # author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    # title = models.CharField(max_length=200)
-    # text = models.TextField()
-    # created_date = models.DateTimeField(default=timezone.now)
-    # published_date = models.DateTimeField(blank=True, null=True)
-
     entry_title = models.CharField(max_length=255)
-    trophy_names = models.TextField()
+    description = models.TextField(blank=True, null=True)
+    trophy_names = models.TextField(blank=True, null=True)
     is_winner = models.BooleanField()
     audience_honor = models.BooleanField()
-    # category = models.CharField(max_length=255)
+    category = models.CharField(max_length=255, blank=True, null=True)
     email = models.EmailField()
     first_name = models.CharField(max_length=255, blank=True, null=True)
     last_name = models.CharField(max_length=255, blank=True, null=True)
@@ -27,6 +22,8 @@ class Entry(models.Model):
     is_individual = models.BooleanField()
     is_organization = models.BooleanField()
     company = models.CharField(max_length=255, blank=True, null=True)
+    image = models.URLField(max_length=255, blank=True, null=True)
+    published_date = models.DateTimeField(blank=True, null=True)
 
     def publish(self):
         self.published_date = timezone.now()
