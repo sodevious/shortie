@@ -16,3 +16,8 @@ mysql -u root
 
 
  python -m pip install -r requirements.txt
+
+
+pythonanywhere
+  source env/bin/activate
+  python3 manage.py migrate

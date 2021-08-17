@@ -5,4 +5,6 @@ from .models import Entry
 
 @admin.register(Entry)
 class EntryAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('entry_title', 'image')
+
+
