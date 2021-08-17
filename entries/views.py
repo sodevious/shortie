@@ -3,9 +3,12 @@ from entries.serializers import EntrySerializer
 
 from django.http import Http404
 
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
+
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import permissions, mixins, generics
+from rest_framework import mixins, generics
 from rest_framework.reverse import reverse
 from rest_framework.decorators import api_view
 
@@ -18,11 +21,12 @@ def api_root(request, format=None):
     })
 
 class EntryList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
-    queryset = Entry.objects.all()
+    queryset = Entry.objects.all().order_by('entry_title')
     serializer_class = EntrySerializer
     permission_classes = []
 
 
+    @method_decorator(cache_page(60*60*1))
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
 
